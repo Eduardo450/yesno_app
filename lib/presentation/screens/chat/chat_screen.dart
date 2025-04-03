@@ -13,10 +13,10 @@ class ChatScreen extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.all(4.0),
           child: CircleAvatar(
-            backgroundImage: NetworkImage("https://th.bing.com/th/id/OIP.U-72ydzjj2ITqjufHWpNXgAAAA?rs=1&pid=ImgDetMain"),
+            backgroundImage: NetworkImage("https://th.bing.com/th/id/R.9331690336a79653e6fdcf64404505ef?rik=yUvV0vPwBkPluw&riu=http%3a%2f%2fimages5.fanpop.com%2fimage%2fphotos%2f30900000%2fterminator-terminator-30973001-1280-1024.jpg&ehk=Th4RunWefbBDMTK%2f75XmPLOHfs4987We%2bGMLxDivLkM%3d&risl=&pid=ImgRaw&r=0"),
           ),
         ),
-        title: Text("Mi Bebé ♡"),
+        title: Text("Terminator"),
       ),
       body: _ChatView(),
     );

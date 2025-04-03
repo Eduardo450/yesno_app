@@ -17,7 +17,7 @@ class MyMessageBubble extends StatelessWidget {
           ),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text("Hola bebé",
+            child: Text("Hola Terminator",
             style: TextStyle(color: Colors.white),),
           ),
         ),

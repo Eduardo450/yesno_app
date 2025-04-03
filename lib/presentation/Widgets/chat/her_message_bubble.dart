@@ -17,7 +17,7 @@ class HerMessageBubble extends StatelessWidget {
           ),   
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text("Hola bebote",
+            child: Text("I'll be back",
             style: TextStyle(color: Colors.white),),
           ),
         ),
@@ -52,7 +52,7 @@ class _ImageBubble extends StatelessWidget {
             width: size.width * 0.6,
             height: 150,
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: const Text("Mi bebé ♡ está enviando una imagen"),
+            child: const Text("Terminator está enviando una imagen"),
           );
 
         },
