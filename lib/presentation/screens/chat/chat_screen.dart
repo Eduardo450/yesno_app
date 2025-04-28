@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:yesno_app/domain/entities/message.dart';
 import 'package:yesno_app/presentation/Widgets/chat/her_message_bubble.dart';
 import 'package:yesno_app/presentation/Widgets/chat/my_message_bubble.dart';
 import 'package:yesno_app/presentation/Widgets/shared/message_field_box.dart';
@@ -41,9 +42,14 @@ class _ChatView extends StatelessWidget {
             Expanded(child: ListView.builder(
               itemCount: chatProvider.messageList.length,
               itemBuilder: (context, index) {
-                return (index % 2 == 0)
-                  ? HerMessageBubble()
-                  : MyMessageBubble();
+                //Instancia que sabrá de quién es el mensaje
+                final message = chatProvider.messageList[index];
+                //Si el residuo es 0 es de ella; si no es 0 es mio
+                //Si es par es de ella, si no, es mio
+                //return (index % 2 == 0)
+                return (message.fromWho == FromWho.hers)
+                  ? HerMessageBubble(message: message,)
+                  : MyMessageBubble(message: message,);
                 },
               )
             ),

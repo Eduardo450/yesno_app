@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:yesno_app/domain/entities/message.dart';
 
 class MyMessageBubble extends StatelessWidget {
-  const MyMessageBubble({super.key});
+  //Variable de la identidad atómica Message
+  final Message message;
+  const MyMessageBubble({super.key,
+  //Se añade la variable al constructor
+  required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +21,9 @@ class MyMessageBubble extends StatelessWidget {
             borderRadius: BorderRadius.circular(20)
           ),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text("Hola Terminator",
-            style: TextStyle(color: Colors.white),),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Text(message.text,
+            style: const TextStyle(color: Colors.white),),
           ),
         ),
         const SizedBox(height: 10,),
