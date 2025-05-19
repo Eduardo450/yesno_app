@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:yesno_app/config/helpers/get_yes_no_answer.dart';
 import 'package:yesno_app/domain/entities/message.dart';
+import 'package:yesno_app/presentation/Widgets/chat/her_message_bubble.dart';
 
 //sendMessage
 
@@ -7,13 +9,10 @@ class ChatProvider extends ChangeNotifier{
 
   //Controlador qeue maneja la posición del scroll
   final ScrollController chatScrollController = ScrollController();
+  final getYesNoAnswer = GetYesNoAnswer();
+
   List<Message> messageList = [
-    Message(text: "Hola w", fromWho: FromWho.hers),
-    Message(text: "Hoy toca Rondalla", fromWho: FromWho.me),
-    Message(text: "Que ondi", fromWho: FromWho.hers),
-    Message(text: "Quiero una torta", fromWho: FromWho.me),
-    Message(text: "Quiero una de asada", fromWho: FromWho.hers),
-    Message(text: "Merry Christmas", fromWho: FromWho.me),
+
   ];
 
 
@@ -24,7 +23,10 @@ class ChatProvider extends ChangeNotifier{
     messageList.add(newMessage);
     print('Cantidad de mensajes: ${messageList.length}');
 
-
+    //Detectar si el usuario hizo una pregunta
+    if(text.endsWith('?')) {
+      herReply();
+    }
 
     //Notifica a provider que algo cambió
     notifyListeners();
@@ -41,5 +43,20 @@ class ChatProvider extends ChangeNotifier{
       duration: const Duration(milliseconds: 300),
       //Rebote al final de la animación
       curve: Curves.easeOut);
+  }
+
+  //Crea la respuesta de ella
+  Future<void> herReply() async {
+    //Obtener el mensaje de la petición
+    final herMessage = await getYesNoAnswer.getAnswer();
+    
+    //Añadimos el mensaje de ella a la lista de mensajes
+    messageList.add(herMessage);
+
+    //Notificar a Provider los cambios
+    notifyListeners();
+
+    //Mover el scroll hasta el ultimo mensaje
+    moveScrollToBottom();
   }
 }
