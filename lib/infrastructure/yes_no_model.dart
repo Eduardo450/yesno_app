@@ -1,4 +1,5 @@
 import 'package:yesno_app/domain/entities/message.dart';
+import 'dart:math';
 
 class YesNoModel {
   final String answer;
@@ -19,12 +20,49 @@ class YesNoModel {
     );
 
   Message toMessageEntity() => Message(
-    text:answer == 'yes' 
-      ? 'Sí' 
-      : answer == 'no' 
-        ? 'No' 
-        : 'Tal Vez',
+  text: answer == 'yes'
+      ? _randomYes()
+      : answer == 'no'
+        ? _randomNo()
+        : _randomAlternative(),
     fromWho: FromWho.hers,
-    imageUrl: image
+    imageUrl: image,
+    sentAt: DateTime.now(),
   );
+
+  String _randomYes() {
+    final afirmativas = [
+      '¡Por supuesto!',
+      'Sí, claro.',
+      'Definitivamente sí.',
+      'Sin duda.',
+      'Simona',
+      'Correcto.'
+    ];
+    return afirmativas[Random().nextInt(afirmativas.length)];
+  }
+
+  String _randomNo() {
+    final negativas = [
+      'No lo creo.',
+      'Definitivamente no.',
+      'Para nada.',
+      'No es posible.',
+      'Nel',
+      'Negativo.'
+    ];
+    return negativas[Random().nextInt(negativas.length)];
+  }
+
+  String _randomAlternative() {
+    final alternativas = [
+      'Tal vez',
+      'Quizá',
+      'Podría ser',
+      'No estoy seguro',
+      'Probablemente',
+      'No lo sé'
+    ];
+    return alternativas[Random().nextInt(alternativas.length)];
+  }
 }

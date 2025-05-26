@@ -26,6 +26,17 @@ class MyMessageBubble extends StatelessWidget {
             style: const TextStyle(color: Colors.white),),
           ),
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Icon(Icons.done_all, color: Colors.blue[800]),
+            Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Visto a las ${TimeOfDay.fromDateTime(message.sentAt).format(context)}',
+              style: const TextStyle(color: Colors.grey),),
+          ),
+          ],
+        ),
         const SizedBox(height: 5,),
       ],
     );
